@@ -6,11 +6,11 @@ import org.junit.jupiter.api.Test
 
 internal class BadProfileViewModelTest {
 
-    private lateinit var viewModel: BadProfileViewModel
+  //  private lateinit var viewModel: BadProfileViewModel
 
     @BeforeEach
     fun setUp() {
-        viewModel = BadProfileViewModel()
+       // viewModel = BadProfileViewModel()
     }
 
     @Test

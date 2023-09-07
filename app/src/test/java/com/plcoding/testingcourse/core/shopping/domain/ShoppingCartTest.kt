@@ -2,6 +2,8 @@ package com.plcoding.testingcourse.core.shopping.domain
 
 import assertk.assertFailure
 import assertk.assertThat
+import assertk.assertions.contains
+import assertk.assertions.hasSize
 import assertk.assertions.isEqualTo
 import com.plcoding.testingcourse.core.data.ShoppingCartCacheFake
 import com.plcoding.testingcourse.core.domain.Product
@@ -21,6 +23,15 @@ internal class ShoppingCartTest {
     fun setUp() {
         cacheFake = ShoppingCartCacheFake()
         cart = ShoppingCart(cacheFake)
+    }
+
+    @Test
+    fun `Test products are saved in cache`() {
+        val product = Product(id = 1, name = "Ice cream", price = 5.0)
+        cart.addProduct(product, 3)
+        val productsFromCache = cacheFake.loadCart()
+        assertThat(productsFromCache).hasSize(3)
+        assertThat(productsFromCache).contains(product)
     }
 
     @ParameterizedTest
