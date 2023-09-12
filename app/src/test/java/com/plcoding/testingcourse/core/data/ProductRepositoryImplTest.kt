@@ -4,9 +4,11 @@ import assertk.assertThat
 import assertk.assertions.isTrue
 import com.plcoding.testingcourse.core.domain.AnalyticsLogger
 import com.plcoding.testingcourse.core.domain.LogParam
+import com.plcoding.testingcourse.core.domain.Product
 import io.mockk.coEvery
 import io.mockk.every
 import io.mockk.mockk
+import io.mockk.mockkConstructor
 import io.mockk.verify
 import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.BeforeEach
@@ -35,6 +37,9 @@ class ProductRepositoryImplTest {
             every { code() } returns 404
             every { message() } returns "Test message"
         }
+
+        mockkConstructor(Product::class)
+        every { anyConstructed<Product>().name } returns "Mocked Ice cream"
 
         val result = productRepository.purchaseProducts(emptyList())
 
