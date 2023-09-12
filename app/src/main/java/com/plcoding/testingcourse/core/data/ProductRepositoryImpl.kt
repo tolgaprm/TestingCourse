@@ -15,12 +15,6 @@ class ProductRepositoryImpl(
 
     override suspend fun purchaseProducts(products: List<Product>): Result<Unit> {
         return try {
-            val product = Product(
-                id = 1,
-                name = "Ice cream",
-                price = 10.0,
-            )
-            println(product.name)
             productApi.purchaseProducts(
                 products = ProductsDto(products)
             )

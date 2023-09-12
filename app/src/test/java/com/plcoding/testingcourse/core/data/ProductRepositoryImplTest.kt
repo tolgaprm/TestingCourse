@@ -38,9 +38,6 @@ class ProductRepositoryImplTest {
             every { message() } returns "Test message"
         }
 
-        mockkConstructor(Product::class)
-        every { anyConstructed<Product>().name } returns "Mocked Ice cream"
-
         val result = productRepository.purchaseProducts(emptyList())
 
         assertThat(result.isFailure).isTrue()
