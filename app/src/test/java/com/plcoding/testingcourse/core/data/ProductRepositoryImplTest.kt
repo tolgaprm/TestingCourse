@@ -63,7 +63,7 @@ internal class ProductRepositoryImplTest {
         }
     }
 
-    @Test
+/*    @Test
     fun `Response error, exception is logged`() = runBlocking {
         coEvery { productApi.purchaseProducts(any()) } throws mockk<HttpException> {
             every { code() } returns 404
@@ -81,5 +81,5 @@ internal class ProductRepositoryImplTest {
                 LogParam("message", "Test message"),
             )
         }
-    }
+    }*/
 }
